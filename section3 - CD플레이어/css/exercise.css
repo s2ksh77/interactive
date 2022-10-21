@@ -1,0 +1,150 @@
+body {
+    overflow: hidden;
+}
+
+.contentWrap {
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(120deg, #0272a4, #f6a564);
+    transition: background 1s ease-out;
+}
+
+.contentWrap .album {
+    position: absolute;
+    top: 47%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 400px;
+    visibility: hidden;
+    opacity: 0;
+    transition: all .4s ease-in-out;
+}
+
+.contentWrap .album.active {
+    visibility: visible;
+    left: 50%;
+    opacity: 1;
+}
+
+.contentWrap .album.active .disk {
+    left: 180px;
+    transition-delay: .5s;
+  }
+
+@media only screen and (max-width: 720px) {
+  .contentWrap .album.active {
+    left: 45%;
+  }
+  .contentWrap .album.active .disk {
+    left: 35%;
+    transition-delay: .5s;
+  }
+}
+
+.contentWrap .album .coverImg {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    box-shadow: 2px 14px 40px rgba(0, 0, 0, 0.3);
+}
+
+.contentWrap .album .coverImg img {
+    width: inherit;
+    height: inherit;
+  }
+
+.contentWrap .album .disk {
+    position: absolute;
+    top:4px;
+    left: 0px;
+    width: 392px;
+    height: 392px;
+    background: linear-gradient(120deg, #000, #333333, #000);
+    border-radius: 50%;
+    box-shadow: 4px 14px 40px rgba(0, 0, 0, 0.7);
+    transition: left 0.6s cubic-bezier(0.645, 0.045, 0.355, 1);
+    animation: rotateAni 10s infinite;
+}
+
+.contentWrap .album .disk .disk_inner {
+    position: absolute;
+    top:50%;
+    left: 50%;
+    width: 160px;
+    height: 160px;
+    transform: translate(-50%,-50%);
+    background: #0473a4;
+    border-radius: 50%;
+    border: 3px dashed rgba(255, 255, 255, 0.4);
+}
+
+.contentWrap .album .disk .disk_inner::after {
+    position: absolute;
+    content: "";
+    width:7px;
+    height: 7px;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    background-color: #000;
+    border-radius: 50%;
+}
+
+.contentWrap .album:hover .disk{
+    left: 40%;
+    transition-delay: 0s;
+}
+
+.buttonWrap {
+    position: fixed;
+    bottom: 5vh;
+    text-align: center;
+    width: 100%;
+}
+
+.buttonWrap button {
+    padding: 6px 20px;
+    background-color: black;
+    color: white;
+    margin: 0 3px;
+    transition: all .3s ease-in-out;
+}
+
+.buttonWrap button:hover {
+    cursor: pointer;
+    background-color: white;
+    color: black;
+}
+
+.buttonWrap .pointWrap {
+    position: relative;
+    display: inline-block;
+    padding: 0 10px;
+}
+
+.buttonWrap .pointWrap li {
+    position: relative;
+    display: inline-block;
+    list-style: none;
+    width: 12px;
+    height: 12px;
+    background-color: rgba(0, 0, 0, 0.4);;
+    border-radius: 50%;
+    margin: 0 5px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.buttonWrap .pointWrap li.active {
+    background-color: black;
+}
+
+@keyframes rotateAni {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
